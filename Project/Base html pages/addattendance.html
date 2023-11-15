@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Attendance - College ERP</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <h2>Add Attendance</h2>
+        <form action="add_attendance_process.php" method="post">
+            <label for="student_id">Student ID:</label>
+            <input type="text" id="student_id" name="student_id" required>
+            <label for="attendance">Attendance:</label>
+            <input type="text" id="attendance" name="attendance" required>
+            <button type="submit">Add Attendance</button>
+        </form>
+    </div>
+</body>
+</html>
