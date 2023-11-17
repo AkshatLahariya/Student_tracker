@@ -1,0 +1,148 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to right, #7e2f7e, #fa7ff0);
+    margin: 0;
+    padding: 0;
+}
+
+.dashboard-container {
+    max-width: 800px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    border: 4px solid #000000;
+}
+
+h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #0d0d0d; /* Set text color */
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold; /* Make the text bold */
+    text-transform: uppercase; /* Convert text to uppercase */
+    text-align: center; /* Align the text to the right */
+    text-decoration: underline;
+    
+}
+
+h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #460147; /* Set text color */
+    font-family :'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bold; /* Make the text bold */
+    text-transform: uppercase; /* Convert text to uppercase */
+    text-align: center; /* Align the text to the right */
+    text-decoration: underline;
+    
+}
+
+p, table {
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+   
+    
+    
+
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    font-weight: bold;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+span {
+    font-weight: bold;
+}
+
+/* Progress bar styles */
+.progress-bar-container {
+    height: 20px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    transition: width 0.6s ease;
+}
+
+/* Subject-wise progress bar colors */
+#fsdProgressBar {
+    background-color: #FF6B6B;
+}
+
+#aiesProgressBar {
+    background-color: #FFD56B;
+}
+
+#icsProgressBar {
+    background-color: #C7CEEA;
+}
+
+#itchProgressBar {
+    background-color: #6B8E23;
+}
+
+#decProgressBar {
+    background-color: #6B66FF;
+}
+
+/* Overall progress bar color */
+#overallProgressBar {
+    background-color: #00ffcc;
+    width: 0; /* Set initial width to 0 */
+}
+
+/* Circular chart styles */
+/* Circular chart styles */
+.circular-chart {
+    display: block;
+    margin: 0 auto;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #8d0c71;
+    position: relative;
+    overflow: hidden;
+}
+
+.circle {
+   
+    width: 100%;
+    height: 100%;
+    
+    background-color: #00ffcc;
+    border-radius: 50%;
+}
+
+.percent {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    
+    color: #050505;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 100px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
