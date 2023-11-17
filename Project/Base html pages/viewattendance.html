@@ -3,16 +3,136 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>View Attendance - College ERP</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Attendance Analysis - College ERP</title>
+    <link rel="stylesheet" href="viewattendance.css">
 </head>
 <body>
     <div class="dashboard-container">
-        <h2>View Attendance</h2>
-        <form action="view_attendance_process.php" method="post">
-            <button type="submit">View My Attendance</button>
-        </form>
-        <!-- Display student attendance data here -->
+        <h2>Attendance Analysis</h2>
+        
+        <h3>Overall Attendance</h3>
+        <p>Total Present: <span id="totalPresent">0</span></p>
+        <p>Total Absent: <span id="totalAbsent">0</span></p>
+        
+        <!-- Update the Overall Attendance Percentage section -->
+        <p>Overall Attendance Percentage:
+            <div class="circular-chart">
+                <div class="circle" id="overallProgressBar"></div>
+                <div class="percent" id="overallPercentage">0%</div>
+            </div>
+        </p>
+
+        <h3>Subject-wise Attendance</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Subject</th>
+                    <th>Total Present</th>
+                    <th>Total Absent</th>
+                    <th>Attendance Percentage</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>FSD</td>
+                    <td id="fsdPresent">0</td>
+                    <td id="fsdAbsent">0</td>
+                    <td>
+                        <span id="fsdPercentage">0%</span>
+                        <div class="progress-bar-container">
+                            <div id="fsdProgressBar" class="progress-bar"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>AIES</td>
+                    <td id="aiesPresent">0</td>
+                    <td id="aiesAbsent">0</td>
+                    <td>
+                        <span id="aiesPercentage">0%</span>
+                        <div class="progress-bar-container">
+                            <div id="aiesProgressBar" class="progress-bar"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>ICS</td>
+                    <td id="icsPresent">0</td>
+                    <td id="icsAbsent">0</td>
+                    <td>
+                        <span id="icsPercentage">0%</span>
+                        <div class="progress-bar-container">
+                            <div id="icsProgressBar" class="progress-bar"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>ITCH</td>
+                    <td id="itchPresent">0</td>
+                    <td id="itchAbsent">0</td>
+                    <td>
+                        <span id="itchPercentage">0%</span>
+                        <div class="progress-bar-container">
+                            <div id="itchProgressBar" class="progress-bar"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>DEC</td>
+                    <td id="decPresent">0</td>
+                    <td id="decAbsent">0</td>
+                    <td>
+                        <span id="decPercentage">0%</span>
+                        <div class="progress-bar-container">
+                            <div id="decProgressBar" class="progress-bar"></div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
+    
+   <!-- Update the script section -->
+<!-- Update the script section -->
+<script>
+    // You need to fetch and set the actual attendance data using JavaScript
+    // For demonstration purposes, setting random values
+    function setRandomAttendanceValues() {
+        document.getElementById('totalPresent').innerText = Math.floor(Math.random() * 50) + 50;
+        document.getElementById('totalAbsent').innerText = Math.floor(Math.random() * 50);
+        setOverallAttendanceValues('overallPercentage', 'overallProgressBar', 75);
+
+        setSubjectAttendanceValues('fsd', 'fsdProgressBar');
+        setSubjectAttendanceValues('aies', 'aiesProgressBar');
+        setSubjectAttendanceValues('ics', 'icsProgressBar');
+        setSubjectAttendanceValues('itch', 'itchProgressBar');
+        setSubjectAttendanceValues('dec', 'decProgressBar');
+    }
+
+    function setOverallAttendanceValues(percentageId, progressBarId, percentage) {
+        document.getElementById(percentageId).innerText = `${percentage}%`;
+        const progressBar = document.getElementById(progressBarId);
+        progressBar.style.width = `${percentage}%`;
+    }
+
+    function setSubjectAttendanceValues(subject, progressBarId) {
+        const present = Math.floor(Math.random() * 15) + 10;
+        const absent = Math.floor(Math.random() * 10);
+        const total = present + absent;
+        const percentage = (present / total) * 100;
+
+        document.getElementById(`${subject}Present`).innerText = present;
+        document.getElementById(`${subject}Absent`).innerText = absent;
+        document.getElementById(`${subject}Percentage`).innerText = `${percentage.toFixed(2)}%`;
+
+        const progressBar = document.getElementById(progressBarId);
+        progressBar.style.width = `${percentage}%`;
+    }
+
+    // Call the function to set random values (replace with actual data)
+    setRandomAttendanceValues();
+</script>
+
+
 </body>
 </html>
