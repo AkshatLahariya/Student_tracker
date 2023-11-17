@@ -1,0 +1,95 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Container styling */
+.dashboard-container {
+    width: 100%;
+    height: 100vh;
+    background-image: url('attendance.png'); /* Use the correct path */
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 10px; 
+}
+
+/* Form styling */
+.dashboard-container h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #0d0d0d; /* Set text color */
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold; /* Make the text bold */
+    text-transform: uppercase; /* Convert text to uppercase */
+    text-align: center; /* Align the text to the right */
+    text-decoration: underline; 
+}
+
+.dashboard-container form {
+    width: 80%;
+    max-width: 400px;
+    background: #fff;
+    padding: 20px;
+    margin-right: 200px;
+    margin-bottom: 0px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    border-radius: 8px;
+    border: 4px solid #000000;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Input field styling */
+label,
+select,
+input,
+button {
+    display: block;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+/* Adjust radio button and label display */
+.attendance-group label {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 5px;
+    color: #000000;
+    white-space: nowrap; /* Ensure that the text does not wrap to the next line */
+}
+
+.attendance-group input[type="radio"] {
+    margin-right: 5px; /* Add spacing between the radio button and label */
+}
+
+
+
+/* Adjust color when radio button is checked */
+#present:checked + label {
+    color: #4caf50;
+}
+
+#absent:checked + label {
+    color: #ff4c4c;
+}
+
+/* Button styling */
+button {
+    background-color: #3c00a0;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #2a0070;
+}
