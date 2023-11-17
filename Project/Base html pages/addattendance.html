@@ -4,93 +4,91 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Attendance - College ERP</title>
-    <!-- Add Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="addattendance.css">
     <style>
-        body {
-            background-image: url('attendance.png');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            color: white;
-            margin: 0;
-            padding: 0;
-            opacity: 0; /* Set initial opacity to 0 for the fade-in effect */
-            animation: fadeIn 1s forwards; /* Apply the fade-in animation */
-        }
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-            }
-        }
-
-        .overlay {
-            background-color: rgba(0, 0, 0, 0.7);
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: -1;
-        }
-
-        .dashboard-container {
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 50px;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Adjust styling for the form */
-        form {
-            max-width: 400px; /* Set a maximum width for better readability */
-            margin: 0 auto; /* Center the form */
-        }
-
-        /* Add styling to the form labels for a more fancy look */
-        label {
-            color: rgb(16, 15, 15);
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 5px;
-            display: block;
-            transition: color 0.3s ease-in-out;
-        }
-
-        /* Add white background to the form fields */
-        .form-group {
-            background-color: white;
-            padding: 10px;
-            border-radius: 5px;
-            margin-bottom: 15px;
-        }
-
-        /* Add some padding to the submit button */
+        /* Add some spacing between input fields */
+        label,
+        input,
+        select,
         button {
-            padding: 10px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        /* Display radio buttons and labels on the same line */
+        .attendance-group label {
+            display: inline-flex;
+            align-items: center;
+            
+        }
+
+        /* Add line breaks after each radio button group */
+        .attendance-group {
+            margin-bottom: 10px;
+        }
+
+        /* Display radio buttons and labels on separate lines */
+        input[type="radio"],
+        label {
+            display: inline-block;
+            margin-right: 10px; /* Adjust the margin as needed */
+        }
+
+        /* Add line breaks after each radio button group */
+        .attendance-group {
+            margin-bottom: 10px;
         }
     </style>
-    <!-- Add Bootstrap JS and Popper.js for Bootstrap functionality -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <div class="overlay"></div>
-    <div class="dashboard-container text-center">
-        <h2>Add Attendance</h2>
+    <div class="dashboard-container">
+        
         <form action="add_attendance_process.php" method="post">
-            <div class="form-group">
-                <label for="student_id">Student ID:</label>
-                <input type="text" class="form-control" id="student_id" name="student_id" required>
-            </div>
-            <div class="form-group">
-                <label for="attendance">Attendance in %:</label>
-                <input type="text" class="form-control" id="attendance" name="attendance" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Add Attendance</button>
+            <h2>Add Attendance</h2>
+            <!-- Add a dropdown for selecting the subject -->
+            <label for="subject">Subject:</label>
+            <select id="subject" name="subject" required>
+                <option value="SUBJECT">Subject</option>
+                <option value="FSD">FSD</option>
+                <option value="ITCH">ITCH</option>
+                <option value="ICS">ICS</option>
+                <option value="DEC">DEC</option>
+                <option value="AIES">AIES</option>
+            </select>
+
+            <!-- Use dropdowns for Panel (A-H) and Roll Number (1-70) -->
+            <label for="panel">Panel:</label>
+            <select id="panel" name="panel" required>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+                <option value="E">E</option>
+                <option value="F">F</option>
+                <option value="G">G</option>
+                <option value="H">H</option>
+            </select>
+
+            <label for="roll_number">Roll Number:</label>
+            <input type="number" id="roll_number" name="roll_number" required>
+
+            <!-- Add a calendar for selecting the date -->
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" required>
+
+            <!-- Use radio buttons for Attendance on the same line -->
+            <label for="attendance">Attendance:</label>
+            <input type="radio" id="present" name="attendance" value="present" required>
+            <label for="present">Present</label>
+
+            <input type="radio" id="absent" name="attendance" value="absent" required>
+            <label for="absent">Absent</label>
+
+            
+
+            <br> <!-- Add a line break for a one-line gap -->
+
+            <button type="submit">Add Attendance</button>
         </form>
     </div>
 </body>
