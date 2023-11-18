@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="stu_dashboard.css">
+</head>
+<body>
+
+    <header>
+        <h1>Student Dashboard</h1>
+    </header>
+
+    <!-- Student login image and greeting -->
+    <div class="student-info">
+        <img src="dashboard_login.png" alt="Student Login Image">
+        <p style="font-size:large;">Hello, <span id="student-name">[Student Name]</span></p>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <section id="attendance" class="dashboard-section">
+                    <h2>View Attendance</h2>
+                    <div class="image-container">
+                        <img src="attend_pie.png" alt="Attendance" class="center-image attendance-image">
+                    </div>
+                    <p>Attendance details go here...</p>
+                    <!-- Bottom buttons -->
+                    <div class="bottom-buttons">
+                        <a href="viewattendance.html" class="btn btn-primary">View Details</a>
+                    </div>
+                </section>
+            </div>
+            <div class="col-md-6">
+                <section id="fees" class="dashboard-section">
+                    <h2>Fees</h2>
+                    <div class="image-container">
+                        <img src="fees.png" alt="Fees Chart" class="center-image">
+                    </div>
+                    <p>Fees details go here...</p>
+                    <!-- Bottom buttons -->
+                    <div class="bottom-buttons">
+                        <button class="btn btn-primary">View Details</button>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <section id="results" class="dashboard-section">
+                    <h2>View Results</h2>
+                    <div class="image-container">
+                        <img src="result.png" alt="Results Chart" class="center-image">
+                    </div>
+                    <p>Results details go here...</p>
+                    <!-- Bottom buttons -->
+                    <div class="bottom-buttons">
+                        <button class="btn btn-primary">View Details</button>
+                    </div>
+                </section>
+            </div>
+            <div class="col-md-6">
+                <section id="job-offers" class="dashboard-section">
+                    <h2>Upcoming Job Offers</h2>
+                    <div class="image-container">
+                        <img src="job.png" alt="Job Offers Chart" class="center-image">
+                    </div>
+                    <p>Job offers details go here...</p>
+                    <!-- Bottom buttons -->
+                    <div class="bottom-buttons">
+                        <a href="https://www.linkedin.com/jobs/engineering-jobs/?currentJobId=3758157230&originalSubdomain=in" class="btn btn-primary">View Details</a>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <section id="performance" class="dashboard-section">
+                    <h2>Check Student Performance</h2>
+                    <div class="image-container">
+                        <img src="performance1.png" alt="Performance Chart" class="center-image">
+                    </div>
+                    <p>Performance details go here...</p>
+                    <!-- Bottom buttons -->
+                    <div class="bottom-buttons">
+                        <button class="btn btn-primary">View Details</button>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Student Dashboard</p>
+    </footer>
+
+    <!-- Bootstrap JavaScript (optional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Custom Script (if needed) -->
+    <!-- <script src="custom.js"></script> -->
+
+</body>
+</html>
