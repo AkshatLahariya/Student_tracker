@@ -50,7 +50,7 @@
 
         signinBtn.onclick = function () {
             if (emailField.value && passwordField.value) {
-               window.location.href = "studash.html";    
+               window.location.href = "stu_dashboard.html";    
                 
             } else {
                 // Switch to sign-in
@@ -62,14 +62,14 @@
 
         signupBtn.onclick = function () {
            
-            if (nameInput.value && emailField.value && passwordField.value) {
+            if (nameField.value && emailField.value && passwordField.value) {
                 if (validatePassword() && validateEmail()) {
                     confirmationMessage.style.display = "block";
                     
                 }
             } else {
                
-                nameField.style.maxHeight = "60";
+                nameField.style.maxHeight = "60px";
                 title.innerHTML = "Sign Up";
                 signupBtn.classList.remove("disable");
                 signinBtn.classList.add("disable");
