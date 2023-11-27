@@ -38,65 +38,67 @@
         </div>
     </div>
     <script>
-        let signupBtn = document.getElementById("signupBtn");
-        let signinBtn = document.getElementById("signinBtn");
-        let nameField = document.getElementById("nameField");
-        let emailField = document.getElementById("emailField");
-        let passwordField = document.getElementById("passwordField");
-        let emailInfo = document.getElementById("emailInfo");
-        let passwordInfo = document.getElementById("passwordInfo");
-        let confirmationMessage = document.getElementById("confirmationMessage");
-        let title = document.getElementById("title");
+        document.addEventListener("DOMContentLoaded", function () {
+    let signupBtn = document.getElementById("signupBtn");
+    let signinBtn = document.getElementById("signinBtn");
+    let nameField = document.getElementById("nameField");
+    let emailField = document.getElementById("emailField");
+    let passwordField = document.getElementById("passwordField");
+    let emailInfo = document.getElementById("emailInfo");
+    let passwordInfo = document.getElementById("passwordInfo");
+    let confirmationMessage = document.getElementById("confirmationMessage");
+    let title = document.getElementById("title");
 
-        signinBtn.onclick = function () {
-            if (emailField.value && passwordField.value) {
-               window.location.href = "stu_dashboard.html";    
-                
-            } else {
-                // Switch to sign-in
-                nameField.style.maxHeight = "0";
-                title.innerHTML = "Sign In";
-                signupBtn.classList.add("disable");
-                signinBtn.classList.remove("disable");
-        }}
-
-        signupBtn.onclick = function () {
-           
-            if (nameField.value && emailField.value && passwordField.value) {
-                if (validatePassword() && validateEmail()) {
-                    confirmationMessage.style.display = "block";
-                    
-                }
-            } else {
-               
-                nameField.style.maxHeight = "60px";
-                title.innerHTML = "Sign Up";
-                signupBtn.classList.remove("disable");
-                signinBtn.classList.add("disable");
-            }
+    signinBtn.addEventListener("click", function () {
+        if (emailField.value && passwordField.value) {
+            window.location.href = "stu_dashboard.html";
+        } else {
+            // Switch to sign-in
+            nameField.style.maxHeight = "0";
+            title.innerHTML = "Sign In";
+            signupBtn.classList.add("disable");
+            signinBtn.classList.remove("disable");
         }
+    });
 
-        function validatePassword() {
-            const passwordRegex = /^(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.*[0-9]).{8,}$/;
-            if (!passwordRegex.test(passwordField.value)) {
-                passwordInfo.innerHTML = "Password must contain a capital letter, a symbol, and a number.";
-                return false;
-            } else {
-                passwordInfo.innerHTML = "";
-                return true;
+    signupBtn.addEventListener("click", function () {
+        if (nameField.value && emailField.value && passwordField.value) {
+            console.log("HelloS")
+            if (validatePassword() && validateEmail()) {
+                confirmationMessage.style.display = "block";
+                console.log("Hellos")
             }
+        } else {
+            nameField.style.maxHeight = "60px";
+            title.innerHTML = "Sign Up";
+            signupBtn.classList.remove("disable");
+            signinBtn.classList.add("disable");
         }
+    });
 
-        function validateEmail() {
-            const emailRegex = /@mitwpu\.edu\.in$/;
-            if (!emailRegex.test(emailField.value)) {
-                emailInfo.innerHTML = "Invalid email address. Please use a valid email ending with @mitwpu.edu.in.";
-                return false;
-            } else {
-                emailInfo.innerHTML = "";
-                return true;
-            }
+    function validatePassword() {
+        const passwordRegex = /^(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.*[0-9]).{8,}$/;
+        if (!passwordRegex.test(passwordField.value)) {
+            passwordInfo.innerHTML = "Password must contain a capital letter, a symbol, and a number.";
+            return false;
+        } else {
+            passwordInfo.innerHTML = "";
+            return true;
         }
+    }
+
+    function validateEmail() {
+        const emailRegex = /@mitwpu\.edu\.in$/;
+        if (!emailRegex.test(emailField.value)) {
+            emailInfo.innerHTML = "Invalid email address. Please use a valid email ending with @mitwpu.edu.in.";
+            return false;
+        } else {
+            emailInfo.innerHTML = "";
+            return true;
+        }
+    }
+});
+
     </script>
 </body>
 </html>

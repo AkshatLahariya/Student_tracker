@@ -1,4 +1,4 @@
-/* testing.css */
+/* stu_dashboard.css */
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -42,33 +42,29 @@ header {
 }
 
 /* Increase size of image in the Attendance section */
-.attendance-image {
-    max-width: 100%; /* Ensure the image doesn't overflow its container */
+.attendance-image,
+.fees-image,
+.results-image,
+.job-offers-image,
+.performance-image,
+.leave-image {
+    width: 100%; /* Set a fixed width to make all images even */
+    max-width: 255px; /* Adjust the maximum width as needed */
+    height: 255px; /* Set the height to 266px */
+    display: block;
+    margin: 0 auto;
+    filter: contrast(1.2) brightness(1.1); /* Adjust values for sharpening */
 }
 
-/* Styles for other images */
-.fees-image {
-    max-width: 100%; /* Adjust as needed */
-    border: 4px solid #5295ad; /* Adjusted border color to match header */
-    border-radius: 8px; /* Added border-radius for smoother corners */
-}
-
-.results-image {
-    max-width: 100%; /* Adjust as needed */
-    border: 4px solid #5295ad; /* Adjusted border color to match header */
-    border-radius: 8px; /* Added border-radius for smoother corners */
-}
-
-.job-offers-image {
-    max-width: 100%; /* Adjust as needed */
-    border: 4px solid #5295ad; /* Adjusted border color to match header */
-    border-radius: 8px; /* Added border-radius for smoother corners */
-}
-
-.performance-image {
-    max-width: 100%; /* Adjust as needed */
-    border: 4px solid #5295ad; /* Adjusted border color to match header */
-    border-radius: 8px; /* Added border-radius for smoother corners */
+/* Decrease size of timetable image */
+#fees .center-image {
+    max-width: 100%; /* Set a fixed width to make all images even */
+    max-height: 255px; /* Adjust the maximum height as needed for the timetable image */
+    width: 255px; /* Maintain the aspect ratio */
+    height: auto; /* Maintain the aspect ratio */
+    display: block;
+    margin: 0 auto;
+    filter: contrast(1.2) brightness(1.1); /* Adjust values for sharpening */
 }
 
 .bottom-buttons {

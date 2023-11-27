@@ -1,0 +1,75 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Container styling */
+.dashboard-container {
+    width: 100%;
+    height: 100vh;
+    background-image: url('attendance.png'); /* Use the correct path */
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 10px; 
+}
+
+/* Form styling for Add Marks */
+.dashboard-container form {
+    position: relative;
+    width: 80%;
+    max-width: 400px;
+    background: #fff;
+    padding: 40px;
+    margin-right: 200px;
+    margin-bottom: 0px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    border-radius: 8px;
+    border: 4px solid #000000;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-container form h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #0d0d0d; /* Set text color */
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold; /* Make the text bold */
+    text-transform: uppercase; /* Convert text to uppercase */
+    text-align: center; /* Align the text to the center */
+    text-decoration: underline; 
+    position: absolute; /* Position absolute to place it inside the form */
+    top: 0px; /* Adjust top position */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Center horizontally */
+}
+
+/* Input field styling */
+label,
+select,
+input,
+button {
+    display: block;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+/* Button styling */
+button {
+    background-color: #3c00a0;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #2a0070;
+}
