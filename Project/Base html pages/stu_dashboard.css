@@ -43,25 +43,13 @@ header {
 
 /* Increase size of image in the Attendance section */
 .attendance-image,
-.fees-image,
 .results-image,
 .job-offers-image,
 .performance-image,
 .leave-image {
     width: 100%; /* Set a fixed width to make all images even */
-    max-width: 255px; /* Adjust the maximum width as needed */
+    max-width: 240px; /* Adjust the maximum width as needed */
     height: 255px; /* Set the height to 266px */
-    display: block;
-    margin: 0 auto;
-    filter: contrast(1.2) brightness(1.1); /* Adjust values for sharpening */
-}
-
-/* Decrease size of timetable image */
-#fees .center-image {
-    max-width: 100%; /* Set a fixed width to make all images even */
-    max-height: 255px; /* Adjust the maximum height as needed for the timetable image */
-    width: 255px; /* Maintain the aspect ratio */
-    height: auto; /* Maintain the aspect ratio */
     display: block;
     margin: 0 auto;
     filter: contrast(1.2) brightness(1.1); /* Adjust values for sharpening */

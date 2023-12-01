@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+    <header>
+        <h1>Admin Dashboard</h1>
+        <nav class="navbar navbar-expand-md navbar-dark bg-transparent">
+            <a class="navbar-brand" href="admin_dashboard.html">Home</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        
+    </header>
+
+    <!-- Admin login image and greeting -->
+    <div class="admin-info">
+        <img src="dashboard_login.png" alt="Admin Login Image">
+        <p style="font-size:large;">Hello, <span id="admin-name">[Admin Name]</span></p>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 offset-md-3"> <!-- Center the section -->
+                <section id="approve-leave" class="dashboard-section">
+                    <h2>Approve Leave</h2>
+                    <!-- Faculty information -->
+                    <div class="faculty-info">
+                        <label for="faculty-name">Faculty Name:</label>
+                        <input type="text" id="faculty-name" name="faculty-name" placeholder="Enter Faculty Name">
+                        <label for="faculty-id">Faculty ID:</label>
+                        <input type="text" id="faculty-id" name="faculty-id" placeholder="Enter Faculty ID">
+                    </div>
+                    <!-- Dropdown for leave approval -->
+                    <div class="leave-approval-dropdown">
+                        <label for="leave-approval">Approve Leave:</label>
+                        <select id="leave-approval" name="leave-approval">
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                    <!-- Bottom buttons -->
+                    <div class="bottom-buttons">
+                        <button class="btn btn-primary">Submit Approval</button>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Admin Dashboard</p>
+    </footer>
+
+    <!-- Bootstrap JavaScript (optional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Custom Script (if needed) -->
+    <!-- <script src="custom.js"></script> -->
+
+</body>
+</html>
