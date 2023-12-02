@@ -8,7 +8,7 @@
 .dashboard-container {
     width: 100%;
     height: 100vh;
-    background-image: url('attendance.png'); /* Use the correct path */
+    background-image: url('grades.png'); /* Use the correct path */
     background-position: center;
     background-size: cover;
     display: flex;
