@@ -1,3 +1,35 @@
+<?php
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    // Fetch values from the form
+    $name = $_POST["name"];
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+
+    // Your database connection code goes here
+    // For example:
+    $servername = "your_server_name";
+    $username = "your_username";
+    $password = "your_password";
+    $dbname = "your_database_name";
+
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // SQL query to insert user data into Users table
+    $sql = "INSERT INTO Users (Name, Email, Password, Status) VALUES ('$name', '$email', '$password', 0)";
+
+    if ($conn->query($sql) === TRUE) {
+        echo "User registered successfully";
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+
+    $conn->close();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
