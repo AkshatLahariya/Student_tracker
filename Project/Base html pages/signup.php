@@ -61,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     </div>
                 </div>
                 <div class="btn-field">
-                    <a href="signin.html">Already registered? <br>Sign In</a>
+                    <a href="signin.php">Already registered? <br>Sign In</a>
                     <button type="button" id="signupBtn">Sign Up</button>
                 </div>
             </form>

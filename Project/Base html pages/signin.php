@@ -75,7 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     </div>
                 </div>
                 <div class="btn-field">
-                    <a href="signup.html">New to the platform? Register</a>
+                    <a href="signup.php">New to the platform? Register</a>
                     <button type="button" id="signinBtn">Sign In</button>
                 </div>
             </form>
