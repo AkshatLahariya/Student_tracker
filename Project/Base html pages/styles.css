@@ -3,7 +3,6 @@
     padding: 0;
     font-family: 'Poppins', sans-serif;
     box-sizing: border-box;
-    
 }
 
 .container {
@@ -14,7 +13,8 @@
     background-size: cover;
     position: relative;
 }
-.form-box{
+
+.form-box {
     width: 90%;
     max-width: 450px;
     position: absolute;
@@ -25,13 +25,15 @@
     padding: 50px 60px 70px;
     text-align: center;
 }
-.form-box h2{
+
+.form-box h2 {
     font-size: 30px;
     margin-bottom: 60px;
     color: #3c00a0;
     position: relative;
 }
-.form-box h2::after{
+
+.form-box h2::after {
     content: '';
     width: 30px;
     height: 4px;
@@ -42,7 +44,8 @@
     left: 50%;
     transform: translateX(-50%);
 }
-.input-field{
+
+.input-field {
     background: #eaeaea;
     margin: 15px 0;
     border-radius: 3px;
@@ -52,33 +55,37 @@
     transition: max-height 0.5s;
     overflow: hidden;
 }
-input{
+
+input {
     width: 100%;
     background: transparent;
     border: 0;
     outline: 0;
     padding: 18px 15px;
 }
-.input-field i{
+
+.input-field i {
     margin-left: 15px;
     color: #999;
 }
-form p{
+
+form p {
     text-align: left;
     font-size: 13px;
-
 }
-form p a{
+
+form p a {
     text-decoration: none;
     color: #3c00a0;
 }
-.btn-field{
+
+.btn-field {
     width: 100%;
     display: flex;
     justify-content: space-between;
-
 }
-.btn-field button{
+
+.btn-field button {
     flex-basis: 48%;
     background: #3c00a0;
     color: #fff;
@@ -87,12 +94,13 @@ form p a{
     border: 0;
     outline: 0;
     cursor: pointer;
-    transition: background 1s;
 }
-.input-group{
+
+.input-group {
     height: 280px;
 }
-.btn-field button.disable{
+
+.btn-field button.disable {
     background: #eaeaea;
     color: #555;
 }

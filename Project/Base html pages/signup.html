@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - College ERP</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/02aff935aa.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="form-box">
+            <h2 id="title">Sign Up</h2>
+            <form action="#" id="signupForm">
+                <div class="input-group">
+                    <div class="input-field" id="nameField">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" placeholder="Name">
+                    </div>
+                    <div class="input-field">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input type="email" id="emailField" placeholder="Email">
+                        <p id="emailInfo"></p>
+                    </div>     
+                    <div class="input-field">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" id="passwordField" placeholder="Password">
+                        <p id="passwordInfo"></p>
+                    </div>
+                </div>
+                <div class="btn-field">
+                    <a href="signin.html">Already registered? <br>Sign In</a>
+                    <button type="button" id="signupBtn">Sign Up</button>
+                </div>
+            </form>
+            <p id="confirmationMessage" style="display: none;">Your request has been sent to the admin for confirmation.</p>
+        </div>
+    </div>
+    <script src="signup.js"></script>
+</body>
+</html>
