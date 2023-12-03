@@ -98,7 +98,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <div class="dashboard-container">
        
-        <form action="add_marks_process.php" method="post">
+        <form action="addMarks.php" method="post">
 		<h2>Add Marks</h2>
             <label for="subject">Select Subject:</label>
             <select id="subject" name="subject" required>
