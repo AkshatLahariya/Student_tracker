@@ -9,24 +9,31 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // For example:
     $servername = "localhost";
     $username = "root";
-    $password = "";
+    $dbpassword = "";
     $dbname = "student_tracker";
 
-    $conn = new mysqli($servername, $username, $password, $dbname);
+    $conn = new mysqli($servername, $username, $dbpassword, $dbname);
 
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    // SQL query to insert user data into Users table
-    $sql = "INSERT INTO Users (Name, Email, Password, Status) VALUES ('$name', '$email', '$password', 0)";
+    // SQL query to insert user data into Users table using prepared statements
+    $sql = "INSERT INTO users (Name, Email, Password, Status) VALUES (?, ?, ?, 0)";
 
-    if ($conn->query($sql) === TRUE) {
+    // Prepare and bind the statement
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("sss", $name, $email, $password);
+
+    // Execute the statement
+    if ($stmt->execute()) {
         echo "User registered successfully";
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
 
+    // Close the statement and connection
+    $stmt->close();
     $conn->close();
 }
 ?>
@@ -43,20 +50,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <div class="container">
         <div class="form-box">
             <h2 id="title">Sign Up</h2>
-            <form action="#" id="signupForm">
+            <form action="#" id="signupForm" method="post">
                 <div class="input-group">
                     <div class="input-field" id="nameField">
                         <i class="fa-solid fa-user"></i>
-                        <input type="text" placeholder="Name">
+                        <input type="text" name="name" placeholder="Name">
                     </div>
                     <div class="input-field">
                         <i class="fa-solid fa-envelope"></i>
-                        <input type="email" id="emailField" placeholder="Email">
+                        <input type="email" name="email" id="emailField" placeholder="Email">
                         <p id="emailInfo"></p>
                     </div>     
                     <div class="input-field">
                         <i class="fa-solid fa-lock"></i>
-                        <input type="password" id="passwordField" placeholder="Password">
+                        <input type="password" name="password" id="passwordField" placeholder="Password">
                         <p id="passwordInfo"></p>
                     </div>
                 </div>

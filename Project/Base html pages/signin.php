@@ -8,18 +8,21 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // For example:
     $servername = "localhost";
     $username = "root";
-    $password = "";
+    $dbpassword = "";
     $dbname = "student_tracker";
 
-    $conn = new mysqli($servername, $username, $password, $dbname);
+    $conn = new mysqli($servername, $username, $dbpassword, $dbname);
 
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    // SQL query to check if the user exists and the status is 1
-    $sql = "SELECT * FROM Users WHERE Email = '$email' AND Password = '$password' AND Status = 1";
-    $result = $conn->query($sql);
+    // Use prepared statements to avoid SQL injection
+    $stmt = $conn->prepare("SELECT * FROM Users WHERE Email = ? AND Password = ? AND Status = 1");
+    $stmt->bind_param("ss", $email, $password);
+
+    $stmt->execute();
+    $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
         // User exists, determine the type based on the first letter of the email
@@ -37,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             header("Location: admindashboard.html");
             exit();
         } elseif ($firstLetter === "S") {
-            header("Location: studentdashboard.html");
+            header("Location: stu_dashboard.html");
             exit();
         }
     }
@@ -45,9 +48,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // If the user doesn't exist or the credentials are incorrect, show an error
     echo "Invalid credentials";
 
+    $stmt->close();
     $conn->close();
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,16 +66,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <div class="container">
         <div class="form-box">
             <h2 id="title">Sign In</h2>
-            <form action="#" id="signinForm">
+            <form action="#" id="signinForm" method="post">
                 <div class="input-group">
                     <div class="input-field">
                         <i class="fa-solid fa-envelope"></i>
-                        <input type="email" id="emailField" placeholder="Email" required>
+                        <input type="email" name="email" id="emailField" placeholder="Email">
                         <p id="emailInfo"></p>
                     </div>     
                     <div class="input-field">
                         <i class="fa-solid fa-lock"></i>
-                        <input type="password" id="passwordField" placeholder="Password" required>
+                        <input type="password" name="password" id="passwordField" placeholder="Password">
                         <p id="passwordInfo"></p>
                     </div>
                 </div>
@@ -90,7 +95,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             if (!email || !password) {
                 alert('Please fill in all required fields.');
                 return;
-            }.
+            }
         });
     </script>
 </body>

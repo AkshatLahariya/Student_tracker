@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    let signupBtn = document.getElementById("signupBtn");
+    let signupForm = document.getElementById("signupForm");
     let nameField = document.getElementById("nameField");
     let emailField = document.getElementById("emailField");
     let passwordField = document.getElementById("passwordField");
@@ -8,17 +8,24 @@ document.addEventListener("DOMContentLoaded", function () {
     let confirmationMessage = document.getElementById("confirmationMessage");
     let title = document.getElementById("title");
 
-    signupBtn.addEventListener("click", function () {
+    document.getElementById("signupBtn").addEventListener("click", function () {
+        console.log("Sign Up Button Clicked");
+
+        // Logging form data
+        console.log("Name:", nameField.value);
+        console.log("Email:", emailField.value);
+        console.log("Password:", passwordField.value);
+
         const isEmailValid = validateEmail();
         const isPasswordValid = validatePassword();
 
         if (isEmailValid && isPasswordValid) {
-            console.log("Confirmation button ");
-            confirmationMessage.style.display = "block";
-            console.log("Sign Up Button working");
+            // If validation passes, submit the form
+            console.log("Form is valid. Submitting...");
+            signupForm.submit();
         } else {
-            // Switch to sign-in
-            console.log("Sign Up Button not working");
+            // If validation fails, do not submit the form
+            console.log("Form is not valid. Validation failed.");
             nameField.style.maxHeight = "60px";
             title.innerHTML = "Sign Up";
         }
