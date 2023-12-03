@@ -34,19 +34,15 @@ foreach ($subjectsData as $subjectData) {
     $progressBarId = $subjectData['progressBarId'];
 
     // Replace this with your actual database query for each subject
-    $internalMarks = 40;  // Replace with actual internal marks
-    $externalMarks = 60;  // Replace with actual external marks
-    $obtainedMarks = $internalMarks + $externalMarks;
+    $marks = 40;  // Replace with actual internal marks
     $totalMarks = 100;
-    $percentage = ($obtainedMarks / $totalMarks) * 100;
+    $percentage = ($marks / $totalMarks) * 100;
 
     // Add subject data to the $data array
     $data['subjects'][] = array(
         'name' => $subjectName,
         'progressBarId' => $progressBarId,
-        'internalMarks' => $internalMarks,
-        'externalMarks' => $externalMarks,
-        'obtainedMarks' => $obtainedMarks,
+        'marks' => $marks,
         'percentage' => $percentage
     );
 }
@@ -86,8 +82,6 @@ $conn->close();
             <thead>
                 <tr>
                     <th>Subject</th>
-                    <th>Internal Marks</th>
-                    <th>External Marks</th>
                     <th>Obtained Marks</th>
                     <th>Marks Percentage</th>
                 </tr>
@@ -96,9 +90,7 @@ $conn->close();
                 <?php foreach ($data['subjects'] as $subject) : ?>
                     <tr>
                         <td><?php echo $subject['name']; ?></td>
-                        <td><?php echo $subject['internalMarks']; ?></td>
-                        <td><?php echo $subject['externalMarks']; ?></td>
-                        <td><?php echo $subject['obtainedMarks']; ?></td>
+                        <td><?php echo $subject['marks']; ?></td>
                         <td><?php echo $subject['percentage'] . '%'; ?></td>
                     </tr>
                 <?php endforeach; ?>
@@ -119,14 +111,14 @@ $conn->close();
         // Function to set marks data from PHP to JavaScript
         function setMarksData(data) {
             document.getElementById('totalMarks').innerText = data.totalMarks;
-            document.getElementById('obtainedMarks').innerText = data.obtainedMarks;
+            document.getElementById('marks').innerText = data.marks;
             setOverallMarksValues('overallPercentage', data.overallPercentage);
 
             const tbody = document.querySelector('tbody');
             tbody.innerHTML = ''; // Clear existing rows
 
             data.subjects.forEach(function (subject) {
-                setSubjectMarksValues(subject.name, subject.internalMarks, subject.externalMarks, subject.obtainedMarks, subject.percentage);
+                setSubjectMarksValues(subject.name, subject.marks, subject.percentage);
             });
         }
 
@@ -140,9 +132,7 @@ $conn->close();
             const row = document.createElement('tr');
             row.innerHTML = `
                 <td>${subject}</td>
-                <td>${internalMarks}</td>
-                <td>${externalMarks}</td>
-                <td>${obtainedMarks}</td>
+                <td>${marks}</td>
                 <td>${percentage}%</td>
             `;
             tbody.appendChild(row);
