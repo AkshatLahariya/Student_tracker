@@ -13,15 +13,41 @@ if ($conn->connect_error) {
 }
 
 // Replace this with your actual database query logic
+$subjectsData = array(
+    array('name' => 'AIES', 'progressBarId' => 'aiesProgressBar'),
+    array('name' => 'FSD', 'progressBarId' => 'fsdProgressBar'),
+    array('name' => 'DEC', 'progressBarId' => 'decProgressBar'),
+    array('name' => 'ICS', 'progressBarId' => 'icsProgressBar'),
+    array('name' => 'ITCH', 'progressBarId' => 'itchProgressBar')
+);
+
 $data = array(
     'totalPresent' => 75,
     'totalAbsent' => 25,
     'overallPercentage' => 75,
-    'subjects' => array(
-        array('name' => 'FSD', 'progressBarId' => 'fsdProgressBar', 'present' => 15, 'absent' => 5, 'percentage' => 75),
-        // Add data for other subjects
-    )
+    'subjects' => array()
 );
+
+// Loop through each subject and fetch data
+foreach ($subjectsData as $subjectData) {
+    $subjectName = $subjectData['name'];
+    $progressBarId = $subjectData['progressBarId'];
+
+    // Replace this with your actual database query for each subject
+    $present = 15;  // Replace with actual present count
+    $absent = 5;    // Replace with actual absent count
+    $total = $present + $absent;
+    $percentage = ($present / $total) * 100;
+
+    // Add subject data to the $data array
+    $data['subjects'][] = array(
+        'name' => $subjectName,
+        'progressBarId' => $progressBarId,
+        'present' => $present,
+        'absent' => $absent,
+        'percentage' => $percentage
+    );
+}
 
 // Set response headers to indicate JSON content
 header('Content-Type: application/json');
