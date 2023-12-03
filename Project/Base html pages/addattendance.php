@@ -89,7 +89,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
 
     <div class="dashboard-container">
-        <form action="add_attendance_process.php" method="post">
+        <form action="addattendance.php" method="post">
             <h2>Add Attendance</h2>
 
             <!-- Use dropdowns for Panel (A-H) and Roll Number (1-70) -->
