@@ -2,13 +2,13 @@
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Extract form data
-    $panel = $_POST["panel"];
+    $panel = $_POST["name"];
     $rollNumber = $_POST["roll_number"];
     $date = $_POST["date"];
     $attendanceStatus = $_POST["attendance"];
 
     // Validate and sanitize the data (you may need more robust validation)
-    $panel = htmlspecialchars($panel);
+    $name = htmlspecialchars($name);
     $rollNumber = intval($rollNumber); // Convert to integer
     $date = htmlspecialchars($date);
     $attendanceStatus = ($attendanceStatus == 'present') ? 'Present' : 'Absent'; // Sanitize attendance status
@@ -92,18 +92,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <form action="addattendance.php" method="post">
             <h2>Add Attendance</h2>
 
-            <!-- Use dropdowns for Panel (A-H) and Roll Number (1-70) -->
-            <label for="panel">Panel:</label>
-            <select id="panel" name="panel" required>
-                <option value="A">A</option>
-                <option value="B">B</option>
-                <option value="C">C</option>
-                <option value="D">D</option>
-                <option value="E">E</option>
-                <option value="F">F</option>
-                <option value="G">G</option>
-                <option value="H">H</option>
-            </select>
+            
+
+            <label for="name">Roll Number:</label>
+            <input type="text" id="name" name="name" required>
 
             <label for="roll_number">Roll Number:</label>
             <input type="number" id="roll_number" name="roll_number" required>
