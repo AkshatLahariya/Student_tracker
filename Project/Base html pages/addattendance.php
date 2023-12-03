@@ -15,10 +15,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Perform database operations (replace this with your actual database logic)
     // For demonstration, let's assume you have a MySQL database
-    $servername = "your_server_name";
-    $username = "your_username";
-    $password = "your_password";
-    $dbname = "your_database_name";
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "student_tracker";
 
     
     $conn = new mysqli($servername, $username, $password, $dbname);
