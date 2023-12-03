@@ -1,3 +1,50 @@
+<?php
+// Check if the form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Extract form data
+    $panel = $_POST["panel"];
+    $rollNumber = $_POST["roll_number"];
+    $date = $_POST["date"];
+    $attendanceStatus = $_POST["attendance"];
+
+    // Validate and sanitize the data (you may need more robust validation)
+    $panel = htmlspecialchars($panel);
+    $rollNumber = intval($rollNumber); // Convert to integer
+    $date = htmlspecialchars($date);
+    $attendanceStatus = ($attendanceStatus == 'present') ? 'Present' : 'Absent'; // Sanitize attendance status
+
+    // Perform database operations (replace this with your actual database logic)
+    // For demonstration, let's assume you have a MySQL database
+    $servername = "your_server_name";
+    $username = "your_username";
+    $password = "your_password";
+    $dbname = "your_database_name";
+
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Prepare and execute SQL query
+    $sql = "INSERT INTO attendance_table (panel, roll_number, date, status) VALUES ('$panel', $rollNumber, '$date', '$attendanceStatus')";
+
+    if ($conn->query($sql) === TRUE) {
+        echo "Attendance added successfully";
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+
+    // Close the database connection
+    $conn->close();
+} else {
+    // If the form is not submitted, redirect to the form page
+    header("Location: addattendance.html");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
