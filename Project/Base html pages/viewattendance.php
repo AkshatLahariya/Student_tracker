@@ -86,7 +86,7 @@ $conn->close();
    <!-- Update the script section -->
    <script>
        function fetchAttendanceData() {
-           fetch('get_attendance_data.php')
+           fetch('addattendance.php')
                .then(response => response.json())
                .then(data => {
                    updateAttendanceUI(data);
