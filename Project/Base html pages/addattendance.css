@@ -13,35 +13,28 @@
     background-position: center;
     background-size: cover;
     display: flex;
-    flex-direction: row;
     align-items: center;
-    justify-content: flex-end;
-    padding-right: 10px; 
+    justify-content: center; /* Center the content horizontally and vertically */
+    padding: 10px;
 }
 
 /* Form styling */
 .dashboard-container h2 {
-    font-size: 28px;
-    margin-bottom: 20px;
-    color: #0d0d0d; /* Set text color */
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #333; /* Dark text color */
     font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold; /* Make the text bold */
-    text-transform: uppercase; /* Convert text to uppercase */
-    text-align: center; /* Align the text to the right */
-    text-decoration: underline; 
+    font-weight: bold;
+    text-align: center;
+    text-decoration: underline;
 }
 
 .dashboard-container form {
     width: 80%;
     max-width: 400px;
-    background: #fff;
+    background: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
     padding: 20px;
-    margin-right: 200px;
-    margin-bottom: 0px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-weight: bold;
     border-radius: 8px;
-    border: 4px solid #000000;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -53,6 +46,10 @@ button {
     display: block;
     margin-bottom: 15px;
     width: 100%;
+    border: 2px solid #333; /* Dark border color */
+    border-radius: 5px;
+    padding: 8px;
+    box-sizing: border-box;
 }
 
 /* Adjust radio button and label display */
@@ -60,15 +57,13 @@ button {
     display: inline-flex;
     align-items: center;
     margin-bottom: 5px;
-    color: #000000;
-    white-space: nowrap; /* Ensure that the text does not wrap to the next line */
+    color: #333; /* Dark text color */
+    white-space: nowrap;
 }
 
 .attendance-group input[type="radio"] {
-    margin-right: 5px; /* Add spacing between the radio button and label */
+    margin-right: 5px;
 }
-
-
 
 /* Adjust color when radio button is checked */
 #present:checked + label {
@@ -81,7 +76,7 @@ button {
 
 /* Button styling */
 button {
-    background-color: #3c00a0;
+    background-color: #3498db; /* Blue color */
     color: #fff;
     padding: 10px;
     border: none;
@@ -91,5 +86,5 @@ button {
 }
 
 button:hover {
-    background-color: #2a0070;
+    background-color: #2980b9; /* Darker blue on hover */
 }

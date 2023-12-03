@@ -19,7 +19,6 @@
         .attendance-group label {
             display: inline-flex;
             align-items: center;
-            
         }
 
         /* Add line breaks after each radio button group */
@@ -43,19 +42,8 @@
 <body>
 
     <div class="dashboard-container">
-        
         <form action="add_attendance_process.php" method="post">
             <h2>Add Attendance</h2>
-            <!-- Add a dropdown for selecting the subject -->
-            <label for="subject">Subject:</label>
-            <select id="subject" name="subject" required>
-                <option value="SUBJECT">Subject</option>
-                <option value="FSD">FSD</option>
-                <option value="ITCH">ITCH</option>
-                <option value="ICS">ICS</option>
-                <option value="DEC">DEC</option>
-                <option value="AIES">AIES</option>
-            </select>
 
             <!-- Use dropdowns for Panel (A-H) and Roll Number (1-70) -->
             <label for="panel">Panel:</label>
@@ -84,8 +72,6 @@
 
             <input type="radio" id="absent" name="attendance" value="absent" required>
             <label for="absent">Absent</label>
-
-            
 
             <br> <!-- Add a line break for a one-line gap -->
 
