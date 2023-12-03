@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = "your_password";
     $dbname = "your_database_name";
 
-    // Create connection
+    
     $conn = new mysqli($servername, $username, $password, $dbname);
 
     // Check connection
