@@ -1,90 +1,3 @@
-<?php
-// Check if the form is submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Extract and sanitize form data
-    $name = isset($_POST["name"]) ? htmlspecialchars($_POST["name"]) : '';
-    $rollNumber = isset($_POST["roll_number"]) ? htmlspecialchars($_POST["roll_number"]) : '';
-    $PRN = isset($_POST["PRN"]) ? htmlspecialchars($_POST["PRN"]) : '';
-    $marksAIES = isset($_POST["marks"]["AIES"]) ? floatval($_POST["marks"]["AIES"]) : 0.0;
-    $marksFSD = isset($_POST["marks"]["FSD"]) ? floatval($_POST["marks"]["FSD"]) : 0.0;
-    $marksITCH = isset($_POST["marks"]["ITCH"]) ? floatval($_POST["marks"]["ITCH"]) : 0.0;
-    $marksDEC = isset($_POST["marks"]["DEC"]) ? floatval($_POST["marks"]["DEC"]) : 0.0;
-    $marksICS = isset($_POST["marks"]["ICS"]) ? floatval($_POST["marks"]["ICS"]) : 0.0;
-
-    // Validate the data
-    $errors = array();
-
-    if (empty($name)) {
-        $errors[] = "Name is required.";
-    }
-
-    if (empty($rollNumber)) {
-        $errors[] = "Roll Number is required.";
-    }
-
-    if (!is_numeric($rollNumber)) {
-        $errors[] = "Roll Number should be a numeric value.";
-    }
-
-    // Validate marks for each subject (between 0 and 100)
-    $maxMarks = 100;
-    if ($marksAIES < 0 || $marksAIES > $maxMarks || $marksFSD < 0 || $marksFSD > $maxMarks ||
-        $marksITCH < 0 || $marksITCH > $maxMarks || $marksDEC < 0 || $marksDEC > $maxMarks ||
-        $marksICS < 0 || $marksICS > $maxMarks) {
-        $errors[] = "Marks should be between 0 and 100 for each subject.";
-    }
-
-    // If there are validation errors, output them
-    if (!empty($errors)) {
-        foreach ($errors as $error) {
-            echo $error . "<br>";
-        }
-        exit();
-    }
-
-    // Perform database operations (replace this with your actual database logic)
-    // For demonstration, let's assume you have a MySQL database
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "student_tracker";
-
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
-    // Prepare and execute SQL query using prepared statement
-    $sql = "INSERT INTO marks_table (PRN, Roll_number, Name, Marks_AIES, Marks_FSD, Marks_DEC, Marks_ICS, Marks_ITCH) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-    $stmt = $conn->prepare($sql);
-
-    if ($stmt) {
-        // Bind parameters and execute
-        $stmt->bind_param("ssssdddd", $prn, $rollNumber, $name, $marksAIES, $marksFSD, $marksDEC, $marksICS, $marksITCH);
-        $stmt->execute();
-
-        if ($stmt->affected_rows > 0) {
-            echo "Marks added successfully";
-        } else {
-            echo "Error: Unable to add marks";
-        }
-
-        // Close the statement
-        $stmt->close();
-    } else {
-        echo "Error: " . $conn->error;
-    }
-
-    // Close the database connection
-    $conn->close();
-} else {
-    // If the form is not submitted, redirect to the form page
-    header("Location: addmarks.html");
-    exit();
-}
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -172,7 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
     <div class="dashboard-container">
-        <form action="addMarks.php" method="post">
+        <form action="" method="post">
             <h2>Add Marks</h2>
 			
 	    <label for="Name">Name</label>
@@ -182,41 +95,129 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="text" id="PRN" name="PRN" required>
 
             <!-- Subject ITCH -->
-            <label for="itch">Marks ITCH</label>
+            <label for="Marks_ITCH">Marks ITCH</label>
             <div class="marks-box">
             <input type="number" id="Marks_ITCH</" name="Marks_ITCH</" required>
             </div>
 			
 			<!-- Subject AIES -->
-            <label for="itch">Marks AIES</label>
+            <label for="Marks_AIES">Marks AIES</label>
             <div class="marks-box">
             <input type="number" id="Marks_AIES</" name="Marks_AIES</" required>
             </div>
 
            <!-- Subject DEC -->
-            <label for="itch">Marks DEC</label>
+            <label for="Marks_DEC">Marks DEC</label>
             <div class="marks-box">
             <input type="number" id="Marks_DEC</" name="Marks_DEC</" required>
             </div>
 
             <!-- Subject ITCH -->
-            <label for="itch">Marks FSD</label>
+            <label for="Marks_FSD">Marks FSD</label>
             <div class="marks-box">
             <input type="number" id="Marks_FSD</" name="Marks_FSD</" required>
             </div>
 			
 			<!-- Subject ITCH -->
-            <label for="itch">Marks ICS</label>
+            <label for="Marks_ICS">Marks ICS</label>
             <div class="marks-box">
             <input type="number" id="Marks_ICS</" name="Marks_ICS</" required>
             </div>
 
-            <label for="roll_number">Roll Number:</label>
+            <label for="Roll_number">Roll Number:</label>
             <input type="text" id="Roll_number" name="Roll_number" required>
 
             <button type="submit">Add Marks</button>
         </form>
     </div>
+	<?php
+// Check if the form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Extract and sanitize form data
+    $Name = isset($_POST["name"]) ? htmlspecialchars($_POST["name"]) : '';
+    $Roll_number = isset($_POST["roll_number"]) ? htmlspecialchars($_POST["roll_number"]) : '';
+    $PRN = isset($_POST["PRN"]) ? htmlspecialchars($_POST["PRN"]) : '';
+    $Marks_AIES = isset($_POST["marks"]["AIES"]) ? floatval($_POST["marks"]["AIES"]) : 0.0;
+    $Marks_FSD = isset($_POST["marks"]["FSD"]) ? floatval($_POST["marks"]["FSD"]) : 0.0;
+    $Marks_ITCH = isset($_POST["marks"]["ITCH"]) ? floatval($_POST["marks"]["ITCH"]) : 0.0;
+    $Marks_DEC = isset($_POST["marks"]["DEC"]) ? floatval($_POST["marks"]["DEC"]) : 0.0;
+    $Marks_ICS = isset($_POST["marks"]["ICS"]) ? floatval($_POST["marks"]["ICS"]) : 0.0;
+
+    // Validate the data
+    $errors = array();
+
+    if (empty($name)) {
+        $errors[] = "Name is required.";
+    }
+
+    if (empty($rollNumber)) {
+        $errors[] = "Roll Number is required.";
+    }
+
+    if (!is_numeric($rollNumber)) {
+        $errors[] = "Roll Number should be a numeric value.";
+    }
+
+    // Validate marks for each subject (between 0 and 100)
+    $maxMarks = 100;
+    if ($marksAIES < 0 || $marksAIES > $maxMarks || $marksFSD < 0 || $marksFSD > $maxMarks ||
+        $marksITCH < 0 || $marksITCH > $maxMarks || $marksDEC < 0 || $marksDEC > $maxMarks ||
+        $marksICS < 0 || $marksICS > $maxMarks) {
+        $errors[] = "Marks should be between 0 and 100 for each subject.";
+    }
+
+    // If there are validation errors, output them
+    if (!empty($errors)) {
+        foreach ($errors as $error) {
+            echo $error . "<br>";
+        }
+        exit();
+    }
+
+    // Perform database operations (replace this with your actual database logic)
+    // For demonstration, let's assume you have a MySQL database
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "student_tracker";
+
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Prepare and execute SQL query using prepared statement
+    $sql = "INSERT INTO marks_table (PRN, Roll_number, Name, Marks_AIES, Marks_FSD, Marks_DEC, Marks_ICS, Marks_ITCH) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+
+    if ($stmt) {
+        // Bind parameters and execute
+        $stmt->bind_param("ssssdddd", $PRN, $Roll_number, $Name, $Marks_AIES, $Marks_FSD, $Marks_DEC, $Marks_ICS, $Marks_ITCH);
+        $stmt->execute();
+
+        if ($stmt->affected_rows > 0) {
+            echo "Marks added successfully";
+        } else {
+            echo "Error: Unable to add marks";
+        }
+
+        // Close the statement
+        $stmt->close();
+    } else {
+        echo "Error: " . $conn->error;
+    }
+
+    // Close the database connection
+    $conn->close();
+} else {
+    // If the form is not submitted, redirect to the form page
+    header("Location: addmarks.html");
+    exit();
+}
+?>
+
 </body>
 </html>
 
