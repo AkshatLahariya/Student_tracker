@@ -111,7 +111,7 @@ const Signup = () => {
             color="white"
             type="submit"
             cursor="pointer"
-            value="Signup as a user"
+            value="Signup as a Student"
             bg="#003B95"
             fontWeight="500"
             _hover={{ bg: "#265cad" }}
@@ -123,7 +123,7 @@ const Signup = () => {
             color="white"
             type="submit"
             cursor="pointer"
-            value="Signup as a dealer"
+            value="Signup as a Faculty"
             bg="#003B95"
             fontWeight="500"
             _hover={{ bg: "#265cad" }}
