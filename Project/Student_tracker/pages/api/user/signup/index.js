@@ -20,8 +20,8 @@ export default async function handler(req, res) {
           .send({ message: "User with provided email already exists" });
 
       const hash = await argon2id.hash(password);
-      const user = await UserModel.create({ name, email, password: hash, role: "user" });
-      res.status(201).send({ message: "User Created", user });
+      const user = await UserModel.create({ name, email, password: hash, role: "Student" });
+      res.status(201).send({ message: "Student Created", user });
     } catch (e) {
       res.status(400).send(e.message);
     }
