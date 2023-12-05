@@ -1,0 +1,11 @@
+.bgImg {
+  background-image: url("https://www.dqlabs.in/images/MIT-World-Peace-University.png");
+  /* width: 100%;
+    height: 900px; */
+  background-size: 100% 100%;
+}
+
+.textOnImg {
+  /* border: 2px solid greenyellow;   */
+  margin-top: 5%;
+}

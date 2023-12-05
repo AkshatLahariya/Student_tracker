@@ -8,9 +8,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Your database connection code goes here
     // For example:
     $servername = "localhost";
-    $username = "Akshat";
+    $username = "root";
     $dbpassword = "";
-    $dbname = "user";
+    $dbname = "student_tracker";
 
     $conn = new mysqli($servername, $username, $dbpassword, $dbname);
 
@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
     // SQL query to insert user data into Users table using prepared statements
-    $sql = "INSERT INTO signup (Name, Email, Password, Status) VALUES (?, ?, ?, 0)";
+    $sql = "INSERT INTO Users (Name, Email, Password, Status) VALUES (?, ?, ?, 0)";
 
     // Prepare and bind the statement
     $stmt = $conn->prepare($sql);
@@ -27,7 +27,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     // Execute the statement
     if ($stmt->execute()) {
-        echo "User registered successfully";
+        // Use JavaScript to show the confirmation message
+        echo "<script>alert('Your details have been sent to the Admin for approval.');</script>";
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
