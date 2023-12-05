@@ -1,145 +1,84 @@
-<?php
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "student_tracker";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-// Example data for all subjects (AIES, FSD, DEC, ICS, ITCH)
-$subjectsData = array(
-    array('name' => 'AIES', 'progressBarId' => 'aiesProgressBar'),
-    array('name' => 'FSD', 'progressBarId' => 'fsdProgressBar'),
-    array('name' => 'DEC', 'progressBarId' => 'decProgressBar'),
-    array('name' => 'ICS', 'progressBarId' => 'icsProgressBar'),
-    array('name' => 'ITCH', 'progressBarId' => 'itchProgressBar')
-);
-
-$data = array(
-    'totalMarks' => 750,
-    'obtainedMarks' => 500,
-    'overallPercentage' => 66.67,
-    'subjects' => array()
-);
-
-// Loop through each subject and fetch data
-foreach ($subjectsData as $subjectData) {
-    $subjectName = $subjectData['name'];
-    $progressBarId = $subjectData['progressBarId'];
-
-    // Replace this with your actual database query for each subject
-    $marks = 40;  // Replace with actual internal marks
-    $totalMarks = 100;
-    $percentage = ($marks / $totalMarks) * 100;
-
-    // Add subject data to the $data array
-    $data['subjects'][] = array(
-        'name' => $subjectName,
-        'progressBarId' => $progressBarId,
-        'marks' => $marks,
-        'percentage' => $percentage
-    );
-}
-
-// Set response headers to indicate JSON content
-header('Content-Type: application/json');
-
-// Output the data as JSON
-echo json_encode($data);
-
-// Close the database connection
-$conn->close();
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marks Analysis - College ERP</title>
-    <link rel="stylesheet" href="viewmarks.css">
+    <title>Student Marks</title>
+    <style>
+        /* CSS for basic table formatting */
+        body {
+            font-family: Arial, sans-serif; /* Change the font if needed */
+            background-color: #f4f4f4; /* Set a background color */
+            margin: 0;
+            padding: 0;
+			text-align: center:
+			
+        }
+		h2{
+		text-align: center;
+		}
+		h3{
+		text-align: center;
+		}
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin-top: 20px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: center;
+            padding: 10px; /* Increased padding for better spacing */
+        }
+        th {
+            background-color: #3c00a0;
+            color: #fff;
+        }
+		
+    </style>
 </head>
 <body>
-    <div class="dashboard-container">
-        <h2>Marks Analysis</h2>
-        
-        <h3>Overall Marks</h3>
-        <p>Total Marks: <span id="totalMarks">0</span></p>
-        <p>Obtained Marks: <span id="obtainedMarks">0</span></p>
-        
-        <!-- Update the Overall Marks Percentage section -->
-        <p>Overall Marks Percentage:
-            <span id="overallPercentage">0%</span>
-        </p>
+    <h2>Student Marks</h2>
 
-        <h3>Subject-wise Marks</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>Subject</th>
-                    <th>Obtained Marks</th>
-                    <th>Marks Percentage</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($data['subjects'] as $subject) : ?>
-                    <tr>
-                        <td><?php echo $subject['name']; ?></td>
-                        <td><?php echo $subject['marks']; ?></td>
-                        <td><?php echo $subject['percentage'] . '%'; ?></td>
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
-    </div>
+    <?php
+    // Establish database connection
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "user"; // Replace with your actual database name
 
-    <!-- Update the script section -->
-    <script>
-        // Function to fetch marks data and populate the HTML
-        function fetchMarksData() {
-            fetch('addMarks.php')
-                .then(response => response.json())
-                .then(data => setMarksData(data))
-                .catch(error => console.error('Error fetching marks data:', error));
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Retrieve form data
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $Name = $_POST['Name'];
+        $Roll_number = $_POST['Roll_number'];
+        $PRN = $_POST['PRN'];
+
+        // Query to fetch marks data for the student
+        $sql = "SELECT Name, PRN, Roll_number, Marks_AIES, Marks_DEC, Marks_FSD, Marks_ICS, Marks_ITCH FROM student_table WHERE Name = '$Name' AND Roll_number = '$Roll_number' AND PRN='$PRN'";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            echo "<h3>Marks for $Name (Roll Number: $Roll_number) PRN: $PRN</h3>";
+            echo "<table>";
+            echo "<tr><th>Name</th><th>PRN</th><th>Roll Number</th><th>Marks AIES</th><th>Marks DEC</th><th>Marks FSD</th><th>Marks ICS</th><th>Marks ITCH</th></tr>";
+            while ($row = $result->fetch_assoc()) {
+                echo "<tr><td>" . $row['Name'] . "</td><td>" . $row['PRN'] . "</td><td>" . $row['Roll_number'] . "</td><td>" . $row['Marks_AIES'] . "</td><td>" . $row['Marks_DEC'] . "</td><td>" . $row['Marks_FSD'] . "</td><td>" . $row['Marks_ICS'] . "</td><td>" . $row['Marks_ITCH'] . "</td></tr>";
+            }
+            echo "</table>";
+        } else {
+            echo "No marks records found for $Name (Roll Number: $Roll_number) PRN: $PRN";
         }
+    }
 
-        // Function to set marks data from PHP to JavaScript
-        function setMarksData(data) {
-            document.getElementById('totalMarks').innerText = data.totalMarks;
-            document.getElementById('marks').innerText = data.marks;
-            setOverallMarksValues('overallPercentage', data.overallPercentage);
-
-            const tbody = document.querySelector('tbody');
-            tbody.innerHTML = ''; // Clear existing rows
-
-            data.subjects.forEach(function (subject) {
-                setSubjectMarksValues(subject.name, subject.marks, subject.percentage);
-            });
-        }
-
-        function setOverallMarksValues(percentageId, percentage) {
-            document.getElementById(percentageId).innerText = `${percentage}%`;
-        }
-
-        function setSubjectMarksValues(subject, internalMarks, externalMarks, obtainedMarks, percentage) {
-            // Dynamically add rows to the table for each subject
-            const tbody = document.querySelector('tbody');
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${subject}</td>
-                <td>${marks}</td>
-                <td>${percentage}%</td>
-            `;
-            tbody.appendChild(row);
-        }
-
-        // Call the fetchMarksData function on page load
-        fetchMarksData();
-    </script>
+    // Close the database connection
+    $conn->close();
+    ?>
 </body>
 </html>

@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         // Redirect based on the type
         if ($firstLetter === "F") {
-            header("Location: teacherdashboard.html");
+            header("Location: tcher_dashboard.html");
             exit();
         } elseif ($firstLetter === "A") {
             header("Location: admindashboard.html");
@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
     // If the user doesn't exist or the credentials are incorrect, show an error
-    echo "Invalid credentials";
+    echo "<script>alert('Invalid Credentials please Approach the Admin.');</script>";
 
     $stmt->close();
     $conn->close();
