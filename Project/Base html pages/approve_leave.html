@@ -1,15 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
+    <title>Approve Leave</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- Custom styles -->
     <link rel="stylesheet" href="approveleave.css">
 </head>
+
 <body>
+
+    <?php
+    // Dynamic admin name (replace with actual admin name)
+    $adminName = "Admin Name";
+    ?>
 
     <header>
         <h1>Admin Dashboard</h1>
@@ -31,7 +38,7 @@
     <!-- Admin login image and greeting -->
     <div class="admin-info">
         <img src="dashboard_login.png" alt="Admin Login Image">
-        <p style="font-size:large;">Hello, <span id="admin-name">[Admin Name]</span></p>
+        <p style="font-size:large;">Hello, <span id="admin-name"><?php echo $adminName; ?></span></p>
     </div>
 
     <div class="container-fluid">
@@ -56,4 +63,5 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
+
 </html>
