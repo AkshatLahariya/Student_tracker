@@ -117,7 +117,7 @@
                     <p>Review and approve leave requests...</p>
                     <!-- Bottom buttons -->
                     <div class="bottom-buttons">
-                        <a href="approve_leave.html" class="btn btn-primary">Go to Approve Leave</a>
+                        <a href="approve_leave.php" class="btn btn-primary">Go to Approve Leave</a>
                     </div>
                 </section>
             </div>

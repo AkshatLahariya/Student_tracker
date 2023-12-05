@@ -14,7 +14,7 @@
     <header>
         <h1>Admin Dashboard</h1>
         <nav class="navbar navbar-expand-md navbar-dark bg-transparent">
-            <a class="navbar-brand" href="admin_dashboard.html">Home</a>
+            <a class="navbar-brand" href="admin_dashboard.php">Home</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
