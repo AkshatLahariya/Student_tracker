@@ -1,64 +1,4 @@
-<?php
-// Check if the form is submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Extract form data
-    $name = isset($_POST["name"]) ? $_POST["name"] : '';
-    $rollNumber = isset($_POST["roll_number"]) ? $_POST["roll_number"] : '';
-    $PRN = isset($_POST["PRN"]) ? $_POST["PRN"] : '';
-    $date = isset($_POST["date"]) ? $_POST["date"] : '';
-    $attendance = isset($_POST["attendance"]) ? $_POST["attendance"] : '';
 
-    // Validate and sanitize the data
-    $name = htmlspecialchars($name);
-    $rollNumber = intval($rollNumber);
-    $PRN = intval($PRN);// Convert to integer
-    $date = htmlspecialchars($date);
-    $attendance = ($attendance == 'present') ? 'Present' : 'Absent'; // Sanitize attendance status
-
-    // Perform database operations (replace this with your actual database logic)
-    // For demonstration, let's assume you have a MySQL database
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "student_tracker";
-
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
-    // Prepare and execute SQL query using prepared statement
-    $sql = "INSERT INTO Student_table (Name, Roll_number, PRN, Date, Attendance) VALUES (?, ?, ?, ?, ?)";
-    $stmt = $conn->prepare($sql);
-
-    if ($stmt) {
-        // Bind parameters and execute
-        $stmt->bind_param("siss", $name, $rollNumber, $PRN $date, $attendance);
-        $stmt->execute();
-
-        if ($stmt->affected_rows > 0) {
-            echo "Attendance added successfully";
-        } else {
-            echo "Error: Unable to add attendance";
-        }
-
-        // Close the statement
-        $stmt->close();
-    } else {
-        echo "Error: " . $conn->error;
-    }
-
-    // Close the database connection
-    $conn->close();
-} else {
-    // If the form is not submitted, redirect to the form page
-    header("Location: addattendance.html");
-    exit();
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -198,5 +138,66 @@ button:hover {
             <button type="submit">Add Attendance</button>
         </form>
     </div>
+	<?php
+// Check if the form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Extract form data
+    $Name = isset($_POST["Name"]) ? $_POST["Name"] : '';
+    $Roll_number = isset($_POST["Roll_number"]) ? $_POST["Roll_number"] : '';
+    $PRN = isset($_POST["PRN"]) ? $_POST["PRN"] : '';
+    $Date = isset($_POST["Date"]) ? $_POST["Date"] : '';
+    $Attendance = isset($_POST["Attendance"]) ? $_POST["Attendance"] : '';
+
+    // Validate and sanitize the data
+    $Name = htmlspecialchars($Name);
+    $Roll_number = intval($Roll_number);
+    $PRN = intval($PRN);// Convert to integer
+    $Date = htmlspecialchars($Date);
+    $Attendance = ($Attendance == 'present') ? 'Present' : 'Absent'; // Sanitize attendance status
+
+    // Perform database operations (replace this with your actual database logic)
+    // For demonstration, let's assume you have a MySQL database
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "student_tracker";
+
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Prepare and execute SQL query using prepared statement
+    $sql = "INSERT INTO Student_table (Name, Roll_number, PRN, Date, Attendance) VALUES (?, ?, ?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+
+    if ($stmt) {
+        // Bind parameters and execute
+        $stmt->bind_param("siss", $Name, $Roll_number, $PRN $Date, $Attendance);
+        $stmt->execute();
+
+        if ($stmt->affected_rows > 0) {
+            echo "Attendance added successfully";
+        } else {
+            echo "Error: Unable to add attendance";
+        }
+
+        // Close the statement
+        $stmt->close();
+    } else {
+        echo "Error: " . $conn->error;
+    }
+
+    // Close the database connection
+    $conn->close();
+} else {
+    // If the form is not submitted, redirect to the form page
+    header("Location: addattendance.html");
+    exit();
+}
+?>
 </body>
 </html>
