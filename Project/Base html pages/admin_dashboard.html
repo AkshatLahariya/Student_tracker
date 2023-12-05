@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -61,7 +62,13 @@
         }
     </style>
 </head>
+
 <body>
+
+    <?php
+    // Dynamic admin name (replace with actual admin name)
+    $adminName = "Admin Name";
+    ?>
 
     <header>
         <h1>Admin Dashboard</h1>
@@ -70,7 +77,7 @@
     <!-- Student login image and greeting -->
     <div class="student-info">
         <img src="dashboard_login.png" alt="Student Login Image">
-        <p style="font-size:large;">Hello, <span id="student-name">[Admin Name]</span></p>
+        <p style="font-size:large;">Hello, <span id="student-name"><?php echo $adminName; ?></span></p>
     </div>
 
     <div class="container-fluid">
@@ -84,7 +91,7 @@
                     <p>Manage users and permissions...</p>
                     <!-- Bottom buttons -->
                     <div class="bottom-buttons">
-                        <a href="view_requests.html" class="btn btn-primary">Go to Add Users</a>
+                        <a href="view_requests.php" class="btn btn-primary">Go to Add Users</a>
                     </div>
                 </section>
             </div>
@@ -127,4 +134,5 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
+
 </html>

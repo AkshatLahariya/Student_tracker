@@ -8,9 +8,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Your database connection code goes here
     // For example:
     $servername = "localhost";
-    $username = "root";
+    $username = "Akshat";
     $dbpassword = "";
-    $dbname = "student_tracker";
+    $dbname = "user";
 
     $conn = new mysqli($servername, $username, $dbpassword, $dbname);
 
@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
     // SQL query to insert user data into Users table using prepared statements
-    $sql = "INSERT INTO users (Name, Email, Password, Status) VALUES (?, ?, ?, 0)";
+    $sql = "INSERT INTO signup (Name, Email, Password, Status) VALUES (?, ?, ?, 0)";
 
     // Prepare and bind the statement
     $stmt = $conn->prepare($sql);
@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <div class="container">
         <div class="form-box">
             <h2 id="title">Sign Up</h2>
-            <form action="#" id="signupForm" method="post">
+            <form action="" id="signupForm" method="post">
                 <div class="input-group">
                     <div class="input-field" id="nameField">
                         <i class="fa-solid fa-user"></i>
