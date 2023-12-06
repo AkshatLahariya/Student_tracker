@@ -171,7 +171,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Prepare and execute SQL query using prepared statement
-    $sql = "INSERT INTO Student_table (Name, Roll_number, PRN, Date, Attendance) VALUES (?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO Student_table (PRN, Roll_number, Name, Date, Attendance) VALUES (?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
 
     if ($stmt) {
