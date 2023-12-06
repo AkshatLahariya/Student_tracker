@@ -37,7 +37,7 @@
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "user"; // Replace with your actual database name
+    $dbname = "student_tracker"; // Replace with your actual database name
 
     $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -51,7 +51,7 @@
         $Roll_number = $_POST['Roll_number'];
 
         // Query to fetch attendance data for the student
-        $sql = "SELECT Date, Attendance FROM your_table_name WHERE Name = '$Name' AND Roll_number = '$Roll_number' AND PRN='$PRN'";
+        $sql = "SELECT Date, Attendance FROM student_table WHERE Name = '$Name' AND Roll_number = '$Roll_number' AND PRN='$PRN'";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
