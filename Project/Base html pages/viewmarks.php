@@ -73,7 +73,12 @@
         $PRN = mysqli_real_escape_string($conn, $_POST['PRN']);
 
         // Query to fetch marks data for the student
+<<<<<<< HEAD
         $sql = "SELECT Name, PRN, Roll_number, Marks_AIES, Marks_DEC, Marks_FSD, Marks_ICS, Marks_ITCH FROM student_table WHERE Name = '$Name' AND Roll_number = '$Roll_number' AND PRN='$PRN'";$result = $conn->query($sql);
+=======
+        $sql = "SELECT PRN, Roll_number, Name,  Marks_AIES, Marks_DEC, Marks_FSD, Marks_ICS, Marks_ITCH FROM marks_table WHERE Name = '$Name' AND Roll_number = '$Roll_number' AND PRN='$PRN'";
+        $result = $conn->query($sql);
+>>>>>>> 93db87ea9c801041ea8556ffce95a8c6b8e41aa9
 
         if ($result) {
             if ($result->num_rows > 0) {
