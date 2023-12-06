@@ -5,9 +5,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     // Your database connection code goes here
     $servername = "localhost";
-    $username = "Akshat";
+    $username = "root";
     $dbpassword = "";
-    $dbname = "user";
+    $dbname = "student_tracker";
 
     $conn = new mysqli($servername, $username, $dbpassword, $dbname);
 

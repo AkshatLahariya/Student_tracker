@@ -5,9 +5,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     // Your database connection code goes here
     $servername = "localhost";
-    $username = "Akshat";
+    $username = "root";
     $dbpassword = "";
-    $dbname = "user";
+    $dbname = "student_tracker";
 
     $conn = new mysqli($servername, $username, $dbpassword, $dbname);
 
@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Check if the 'approve' button is clicked
     if (isset($_POST["approve"])) {
         // SQL query to update the Status to 1 for the approved user
-        $sql = "UPDATE signup SET Status = 1 WHERE Name = ?";
+        $sql = "UPDATE users SET Status = 1 WHERE Name = ?";
 
         // Prepare and bind the statement
         $stmt = $conn->prepare($sql);

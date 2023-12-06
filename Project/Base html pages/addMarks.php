@@ -97,31 +97,31 @@
             <!-- Subject ITCH -->
             <label for="Marks_ITCH">Marks ITCH</label>
             <div class="marks-box">
-            <input type="number" id="Marks_ITCH</" name="Marks_ITCH</" required>
+                <input type="number" id="Marks_ITCH" name="Marks_ITCH" required>
             </div>
 			
-			<!-- Subject AIES -->
+            <!-- Subject AIES -->
             <label for="Marks_AIES">Marks AIES</label>
             <div class="marks-box">
-            <input type="number" id="Marks_AIES</" name="Marks_AIES</" required>
+                <input type="number" id="Marks_AIES" name="Marks_AIES" required>
             </div>
 
-           <!-- Subject DEC -->
+            <!-- Subject DEC -->
             <label for="Marks_DEC">Marks DEC</label>
             <div class="marks-box">
-            <input type="number" id="Marks_DEC</" name="Marks_DEC</" required>
+                <input type="number" id="Marks_DEC" name="Marks_DEC" required>
             </div>
 
-            <!-- Subject ITCH -->
+            <!-- Subject FSD -->
             <label for="Marks_FSD">Marks FSD</label>
             <div class="marks-box">
-            <input type="number" id="Marks_FSD</" name="Marks_FSD</" required>
+                <input type="number" id="Marks_FSD" name="Marks_FSD" required>
             </div>
 			
-			<!-- Subject ITCH -->
+            <!-- Subject ICS -->
             <label for="Marks_ICS">Marks ICS</label>
             <div class="marks-box">
-            <input type="number" id="Marks_ICS</" name="Marks_ICS</" required>
+                <input type="number" id="Marks_ICS" name="Marks_ICS" required>
             </div>
 
             <label for="Roll_number">Roll Number:</label>
@@ -134,35 +134,35 @@
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Extract and sanitize form data
-    $Name = isset($_POST["name"]) ? htmlspecialchars($_POST["name"]) : '';
-    $Roll_number = isset($_POST["roll_number"]) ? htmlspecialchars($_POST["roll_number"]) : '';
+    $Name = isset($_POST["Name"]) ? htmlspecialchars($_POST["Name"]) : '';
+    $Roll_number = isset($_POST["Roll_number"]) ? htmlspecialchars($_POST["Roll_number"]) : '';
     $PRN = isset($_POST["PRN"]) ? htmlspecialchars($_POST["PRN"]) : '';
-    $Marks_AIES = isset($_POST["marks"]["AIES"]) ? floatval($_POST["marks"]["AIES"]) : 0.0;
-    $Marks_FSD = isset($_POST["marks"]["FSD"]) ? floatval($_POST["marks"]["FSD"]) : 0.0;
-    $Marks_ITCH = isset($_POST["marks"]["ITCH"]) ? floatval($_POST["marks"]["ITCH"]) : 0.0;
-    $Marks_DEC = isset($_POST["marks"]["DEC"]) ? floatval($_POST["marks"]["DEC"]) : 0.0;
-    $Marks_ICS = isset($_POST["marks"]["ICS"]) ? floatval($_POST["marks"]["ICS"]) : 0.0;
+    $Marks_AIES = isset($_POST["Marks_AIES"]) ? floatval($_POST["Marks_AIES"]) : 0.0;
+    $Marks_FSD = isset($_POST["Marks_FSD"]) ? floatval($_POST["Marks_FSD"]) : 0.0;
+    $Marks_ITCH = isset($_POST["Marks_ITCH"]) ? floatval($_POST["Marks_ITCH"]) : 0.0;
+    $Marks_DEC = isset($_POST["Marks_DEC"]) ? floatval($_POST["Marks_DEC"]) : 0.0;
+    $Marks_ICS = isset($_POST["Marks_ICS"]) ? floatval($_POST["Marks_ICS"]) : 0.0;
 
     // Validate the data
     $errors = array();
 
-    if (empty($name)) {
+    if (empty($Name)) {
         $errors[] = "Name is required.";
     }
 
-    if (empty($rollNumber)) {
+    if (empty($Roll_number)) {
         $errors[] = "Roll Number is required.";
     }
 
-    if (!is_numeric($rollNumber)) {
+    if (!is_numeric($Roll_number)) {
         $errors[] = "Roll Number should be a numeric value.";
     }
 
     // Validate marks for each subject (between 0 and 100)
     $maxMarks = 100;
-    if ($marksAIES < 0 || $marksAIES > $maxMarks || $marksFSD < 0 || $marksFSD > $maxMarks ||
-        $marksITCH < 0 || $marksITCH > $maxMarks || $marksDEC < 0 || $marksDEC > $maxMarks ||
-        $marksICS < 0 || $marksICS > $maxMarks) {
+    if ($Marks_AIES < 0 || $Marks_AIES > $maxMarks || $Marks_FSD < 0 || $Marks_FSD > $maxMarks ||
+        $Marks_ITCH < 0 || $Marks_ITCH > $maxMarks || $Marks_DEC < 0 || $Marks_DEC > $maxMarks ||
+        $Marks_ICS < 0 || $Marks_ICS > $maxMarks) {
         $errors[] = "Marks should be between 0 and 100 for each subject.";
     }
 
@@ -212,12 +212,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Close the database connection
     $conn->close();
 } else {
-    // If the form is not submitted, redirect to the form page
-    header("Location: addmarks.html");
-    exit();
+    // If the form is not submitted, you can redirect to the same page
+    // or do nothing if you want to keep the form and processing in the same file.
+    // header("Location: addmarks.html");
+    // exit();
 }
 ?>
-
 </body>
 </html>
 

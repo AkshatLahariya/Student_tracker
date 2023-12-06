@@ -43,9 +43,9 @@
                     <?php
                     // Your database connection code goes here
                     $servername = "localhost";
-                    $username = "Akshat";
+                    $username = "root";
                     $dbpassword = "";
-                    $dbname = "user";
+                    $dbname = "student_tracker";
 
                     $conn = new mysqli($servername, $username, $dbpassword, $dbname);
 
@@ -55,7 +55,7 @@
                     }
 
                     // Fetch user requests from the Users table
-                    $sql = "SELECT * FROM signup WHERE Status = 0";
+                    $sql = "SELECT * FROM users WHERE Status = 0";
                     $result = $conn->query($sql);
 
                     // Check if there are user requests

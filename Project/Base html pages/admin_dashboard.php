@@ -95,19 +95,7 @@
                     </div>
                 </section>
             </div>
-            <div class="col-md-4">
-                <section id="update-info" class="dashboard-section">
-                    <h2>Update Student Info</h2>
-                    <div class="image-container">
-                        <img src="fees.png" alt="Update Info" class="center-image">
-                    </div>
-                    <p>Update your personal information...</p>
-                    <!-- Bottom buttons -->
-                    <div class="bottom-buttons">
-                        <button class="btn btn-primary">Go to Update Info</button>
-                    </div>
-                </section>
-            </div>
+            
             <div class="col-md-4">
                 <section id="approve-leave" class="dashboard-section">
                     <h2>Approve Leaves</h2>

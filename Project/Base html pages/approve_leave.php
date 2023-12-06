@@ -18,9 +18,9 @@
 
     // Your database connection code goes here
     $servername = "localhost";
-    $username = "Akshat";
+    $username = "root";
     $password = "";
-    $dbname = "user";
+    $dbname = "student_tracker";
 
     $conn = new mysqli($servername, $username, $password, $dbname);
 

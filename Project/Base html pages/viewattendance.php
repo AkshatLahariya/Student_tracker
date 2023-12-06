@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Student Attendance</title>
-<style>
+    <title>View Student Attendance</title>
+    <style>
         /* CSS for basic table formatting */
         body {
             font-family: Arial, sans-serif; /* Change the font if needed */
@@ -27,10 +27,32 @@
             background-color: #3c00a0;
             color: #fff;
         }
+        form {
+            margin-top: 20px;
+            text-align: center;
+        }
+        input {
+            padding: 5px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 8px;
+            background-color: #3c00a0;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
-    <h2>Student Attendance</h2>
+    <h2>View Student Attendance</h2>
+
+    <form action="" method="post">
+        <label for="PRN">Enter PRN:</label>
+        <input type="text" id="PRN" name="PRN" required>
+        <button type="submit">View Attendance</button>
+    </form>
 
     <?php
     // Establish database connection
@@ -47,23 +69,27 @@
 
     // Retrieve form data
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $Name = $_POST['Name'];
-        $Roll_number = $_POST['Roll_number'];
+        // Validate and sanitize form data
+        $PRN = mysqli_real_escape_string($conn, $_POST['PRN']);
 
         // Query to fetch attendance data for the student
-        $sql = "SELECT Date, Attendance FROM Student_table WHERE Name = '$Name' AND Roll_number = '$Roll_number' AND PRN='$PRN'";
+        $sql = "SELECT Name, Roll_number, Date, Attendance FROM student_table WHERE PRN='$PRN'";
         $result = $conn->query($sql);
 
-        if ($result->num_rows > 0) {
-            echo "<h3>Attendance for $Name (Roll Number: $Roll_number) PRN: $PRN</h3>";
-            echo "<table>";
-            echo "<tr><th>Date</th><th>Attendance</th></tr>";
-            while ($row = $result->fetch_assoc()) {
-                echo "<tr><td>" . $row['Date'] . "</td><td>" . $row['Attendance'] . "</td></tr>";
+        if ($result) {
+            if ($result->num_rows > 0) {
+                echo "<h3>Attendance for PRN: $PRN</h3>";
+                echo "<table>";
+                echo "<tr><th>Name</th><th>Roll Number</th><th>Date</th><th>Attendance</th></tr>";
+                while ($row = $result->fetch_assoc()) {
+                    echo "<tr><td>" . $row['Name'] . "</td><td>" . $row['Roll_number'] . "</td><td>" . $row['Date'] . "</td><td>" . $row['Attendance'] . "</td></tr>";
+                }
+                echo "</table>";
+            } else {
+                echo "No attendance records found for PRN: $PRN";
             }
-            echo "</table>";
         } else {
-            echo "No attendance records found for $Name (Roll Number: $Roll_number) PRN: $PRN";
+            echo "Error: " . $conn->error;
         }
     }
 
